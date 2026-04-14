@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cherished Mum — Where Little Hearts Are Tenderly Grown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ─── RESET & BASE ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:      #FAF7F2;
+  --cream-dk:   #F2EDE4;
+  --green-dk:   #3B6D11;
+  --green-md:   #639922;
+  --green-lt:   #97C459;
+  --green-pal:  #EAF3DE;
+  --amber:      #BA7517;
+  --amber-lt:   #FAC775;
+  --amber-pal:  #FAEEDA;
+  --pink:       #ED93B1;
+  --pink-lt:    #F4C0D1;
+  --pink-pal:   #FBEAF0;
+  --divider:    #D3C4A8;
+  --muted:      #A09880;
+  --dark:       #2C2C2A;
+  --dark-soft:  #5F5E5A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream-dk); }
+::-webkit-scrollbar-thumb { background: var(--green-lt); border-radius: 3px; }
+
+/* ─── NAVIGATION ────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(211,196,168,0.4);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(59,109,17,0.06); }
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 36px;
+  height: 36px;
+}
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.nav-logo-name {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--green-dk);
+  letter-spacing: 0.02em;
+}
+.nav-logo-tag {
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--dark-soft);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green-dk); }
+
+.nav-cta {
+  background: var(--green-dk);
+  color: var(--cream) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 500 !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--green-md) !important; color: var(--cream) !important; }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ─── HERO ──────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 2.5rem 5rem;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  z-index: 0;
+}
+
+/* botanical SVG corners */
+.hero-botanical {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-botanical.tl { top: 0; left: 0; }
+.hero-botanical.br { bottom: 0; right: 0; transform: rotate(180deg); }
+.hero-botanical.tr { top: 0; right: 0; transform: scaleX(-1); }
+
+/* floating seed dots */
+.hero-dot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-content { max-width: 560px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-pal);
+  color: var(--green-dk);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green-md);
+}
+
+.hero-headline {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.18;
+  color: var(--dark);
+  margin-bottom: 1.2rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--green-dk);
+}
+.hero-headline .amber { color: var(--amber); }
+
+.hero-tagline {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--dark-soft);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-dk);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.85rem 1.8rem;
+  border-radius: 50px;
+  transition: all 0.25s;
+  letter-spacing: 0.03em;
+}
+.btn-primary:hover {
+  background: var(--green-md);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59,109,17,0.2);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--green-dk);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.85rem 1.8rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--green-lt);
+  transition: all 0.25s;
+}
+.btn-secondary:hover {
+  background: var(--green-pal);
+  transform: translateY(-2px);
+}
+
+/* Hero illustration area */
+.hero-visual {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1.5rem;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+/* ── Hero card stack: vertical layout, no text overlap ── */
+.hero-card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.hero-card {
+  border-radius: 18px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 4px 24px rgba(44,44,42,0.09);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Gentle side-offset per card so they feel layered, not rigid */
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(44,44,42,0.13);
+}
+
+.hero-card-1 {
+  background: var(--green-dk);
+  transform: rotate(-1deg);
+  align-self: flex-start;
+  width: 96%;
+}
+.hero-card-1:hover { transform: rotate(0deg) translateY(-4px); }
+
+.hero-card-2 {
+  background: var(--cream);
+  border: 1px solid var(--divider);
+  transform: rotate(1deg);
+  align-self: flex-end;
+  width: 96%;
+}
+.hero-card-2:hover { transform: rotate(0deg) translateY(-4px); }
+
+.hero-card-3 {
+  background: var(--amber-pal);
+  border: 1px solid var(--amber-lt);
+  transform: rotate(-0.8deg);
+  align-self: center;
+  width: 93%;
+}
+.hero-card-3:hover { transform: rotate(0deg) translateY(-4px); }
+
+/* Card typography */
+.hero-card-1 p {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--cream);
+  line-height: 1.65;
+}
+.hero-card-1 .card-author {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--green-lt);
+  margin-top: 0.85rem;
+}
+
+.hero-card-2 .card-tag {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--green-md);
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+.hero-card-2 p {
+  font-family: 'Lora', serif;
+  font-size: 0.88rem;
+  color: var(--dark-soft);
+  line-height: 1.7;
+}
+
+.hero-card-3 .card-label {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.hero-card-3 p {
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  color: var(--amber);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+/* ─── SECTION SHARED ────────────────────────────────── */
+section { padding: 6rem 2.5rem; }
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--divider);
+}
+
+.section-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--green-dk); }
+
+/* ─── BELIEFS STRIP ─────────────────────────────────── */
+.beliefs {
+  background: var(--green-dk);
+  padding: 3rem 2.5rem;
+  overflow: hidden;
+}
+.beliefs-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.belief-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cream);
+}
+.belief-item svg { flex-shrink: 0; }
+.belief-item p {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.belief-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* ─── ABOUT ─────────────────────────────────────────── */
+.about { background: var(--cream); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+}
+
+.about-illustration {
+  width: 100%;
+  max-width: 420px;
+  background: var(--green-pal);
+  border-radius: 28px;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-illustration::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: var(--amber-pal);
+  opacity: 0.5;
+}
+
+.about-illustration-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.about-quote {
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--green-dk);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.about-stat {
+  background: white;
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+}
+.about-stat-num {
+  font-family: 'Lora', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--green-dk);
+  line-height: 1;
+}
+.about-stat-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+.about-content {}
+
+.about-lead {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--dark-soft);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-text {
+  font-size: 0.88rem;
+  color: var(--dark-soft);
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+}
+
+.about-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+.about-pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0.8rem;
+  border-radius: 12px;
+  background: var(--cream-dk);
+  transition: background 0.2s;
+}
+.about-pillar:hover { background: var(--green-pal); }
+.about-pillar-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.about-pillar-text h4 {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 0.15rem;
+}
+.about-pillar-text p {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ─── BOOKS ─────────────────────────────────────────── */
+.books { background: var(--cream); }
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.book-card {
+  background: white;
+  border: 1px solid var(--divider);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(59,109,17,0.1);
+}
+
+.book-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-cover-1 { background: var(--green-dk); }
+.book-cover-2 { background: var(--amber-pal); border-bottom: 1px solid var(--divider); }
+.book-cover-3 { background: var(--pink-pal); border-bottom: 1px solid var(--pink-lt); }
+.book-cover-3 .book-title-art {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #993556;
+  line-height: 1.3;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+.book-cover-3 .book-author-art {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.book-cover-inner {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.book-cover-1 .book-title-art {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+.book-cover-2 .book-title-art {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--amber);
+  line-height: 1.3;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+.book-cover-1 .book-author-art {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--green-lt);
+}
+.book-cover-2 .book-author-art {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.book-info { padding: 1.5rem; }
+.book-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-md);
+  margin-bottom: 0.5rem;
+}
+.book-name {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
+}
+.book-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+.book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--green-pal);
+  color: var(--green-dk);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  transition: all 0.2s;
+}
+.book-btn:hover {
+  background: var(--green-dk);
+  color: var(--cream);
+}
+
+/* ─── CONTACT ───────────────────────────────────────── */
+.contact { background: var(--green-dk); position: relative; overflow: hidden; }
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.contact::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-content .section-label { color: var(--green-lt); }
+.contact-content .section-label::after { background: rgba(151,196,89,0.3); }
+
+.contact-content .section-title { color: var(--cream); }
+.contact-content .section-title em { color: var(--amber-lt); }
+
+.contact-desc {
+  font-size: 0.9rem;
+  color: rgba(250,247,242,0.75);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+.contact-detail-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-detail p {
+  font-size: 0.85rem;
+  color: rgba(250,247,242,0.85);
+}
+.contact-detail a {
+  color: var(--amber-lt);
+  text-decoration: none;
+}
+.contact-detail a:hover { text-decoration: underline; }
+
+.contact-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.8rem;
+}
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.08);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.2s;
+}
+.social-btn:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+/* Contact Form */
+.contact-form-wrap {
+  background: white;
+  border-radius: 24px;
+  padding: 2.5rem;
+}
+
+.form-title {
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+}
+.form-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1.8rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--dark-soft);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--cream);
+  border: 1.5px solid var(--divider);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: var(--dark);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--green-md);
+  box-shadow: 0 0 0 3px rgba(151,196,89,0.15);
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 1.2rem;
+}
+.form-check input[type="checkbox"] {
+  width: 16px; height: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--green-dk);
+}
+.form-check label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.55;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--green-dk);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.95rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.form-submit:hover {
+  background: var(--green-md);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59,109,17,0.25);
+}
+
+/* ─── FOOTER ────────────────────────────────────────── */
+footer {
+  background: var(--dark);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-logo {
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+.footer-tagline {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--green-lt); }
+.footer-copy {
+  font-size: 0.72rem;
+  color: rgba(160,152,128,0.5);
+}
+
+/* ─── ANIMATIONS ────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── MOBILE RESPONSIVE ────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: var(--cream);
+    padding: 1.5rem 2rem;
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--divider);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    z-index: 99;
+  }
+
+  .hero { padding: 6rem 1.5rem 4rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-visual { order: -1; padding-top: 0; }
+  .hero-card-stack { max-width: 100%; }
+
+  section { padding: 4rem 1.5rem; }
+
+  .beliefs-inner { flex-direction: column; gap: 1.2rem; text-align: center; }
+  .belief-divider { width: 40px; height: 1px; }
+  .belief-item p { white-space: normal; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .books-grid { grid-template-columns: 1fr 1fr; }
+
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .books-grid { grid-template-columns: 1fr; }
+
+  .footer-links { flex-wrap: wrap; gap: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-headline { font-size: 1.9rem; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+  .about-pillars { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .contact-form-wrap { padding: 1.5rem; }
+  .books-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none">
+      <ellipse cx="18" cy="28" rx="7" ry="8" fill="#FAC775"/>
+      <ellipse cx="15" cy="24" rx="2.5" ry="3.5" fill="#FAEEDA" opacity="0.7"/>
+      <line x1="18" y1="20" x2="18" y2="4" stroke="#3B6D11" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M18 12 Q8 7 10 1 Q15 6 18 12Z" fill="#97C459"/>
+      <path d="M18 8 Q28 3 26 -3 Q21 2 18 8Z" fill="#639922"/>
+      <path d="M18 1 Q15 -3 12 -1 Q12 3 18 6 Q24 3 24 -1 Q21 -3 18 1Z" fill="#ED93B1"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Cherished Mum</span>
+      <span class="nav-logo-tag">Where little hearts are tenderly grown</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+  <div class="nav-burger" id="burger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+
+  <!-- botanical corners -->
+  <svg class="hero-botanical tl" width="260" height="220" viewBox="0 0 260 220" fill="none">
+    <path d="M0 160 Q78 50 175 25 Q140 110 0 160Z" fill="#97C459" opacity="0.12"/>
+    <path d="M0 200 Q100 80 220 42 Q170 140 0 200Z" fill="#639922" opacity="0.08"/>
+    <path d="M0 120 Q55 38 130 18 Q100 80 0 120Z" fill="#3B6D11" opacity="0.1"/>
+    <line x1="80" y1="0" x2="80" y2="90" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" opacity="0.15"/>
+    <path d="M80 48 Q52 32 55 10 Q68 28 80 48Z" fill="#97C459" opacity="0.2"/>
+    <path d="M80 32 Q108 16 105 -6 Q92 12 80 32Z" fill="#639922" opacity="0.18"/>
+  </svg>
+  <svg class="hero-botanical br" width="220" height="200" viewBox="0 0 260 220" fill="none">
+    <path d="M0 160 Q78 50 175 25 Q140 110 0 160Z" fill="#97C459" opacity="0.10"/>
+    <path d="M0 200 Q100 80 220 42 Q170 140 0 200Z" fill="#639922" opacity="0.07"/>
+  </svg>
+  <svg class="hero-botanical tr" width="180" height="160" viewBox="0 0 260 220" fill="none">
+    <path d="M0 120 Q55 38 130 18 Q100 80 0 120Z" fill="#FAC775" opacity="0.12"/>
+    <path d="M0 80 Q38 22 90 8 Q68 56 0 80Z" fill="#ED93B1" opacity="0.10"/>
+  </svg>
+
+  <!-- floating dots -->
+  <div class="hero-dot" style="width:8px;height:8px;background:#FAC775;opacity:0.5;top:22%;left:15%;animation-delay:0s;"></div>
+  <div class="hero-dot" style="width:5px;height:5px;background:#97C459;opacity:0.4;top:40%;left:8%;animation-delay:1.5s;"></div>
+  <div class="hero-dot" style="width:6px;height:6px;background:#ED93B1;opacity:0.4;top:65%;left:18%;animation-delay:3s;"></div>
+  <div class="hero-dot" style="width:7px;height:7px;background:#FAC775;opacity:0.35;top:18%;right:12%;animation-delay:0.8s;"></div>
+  <div class="hero-dot" style="width:4px;height:4px;background:#97C459;opacity:0.4;top:72%;right:22%;animation-delay:2.2s;"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        A space for intentional parents
+      </div>
+      <h1 class="hero-headline">
+        The greatest gift<br>
+        you can give<br>
+        your child is<br>
+        <em>a growth mindset.</em>
+      </h1>
+      <p class="hero-tagline">
+        A place for parents who believe that gently encouraging a child to keep trying — even when it's hard — is the most powerful thing we can do.
+      </p>
+      <div class="hero-actions">
+        <a href="#books" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Discover our books
+        </a>
+        <a href="#about" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          Our story
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+
+        <div class="hero-card hero-card-1">
+          <p>"She held her hands together and whispered: I can try again."</p>
+          <p class="card-author">— THE LITTLE GIRL WHO KEPT TRYING</p>
+        </div>
+
+        <div class="hero-card hero-card-2">
+          <p class="card-tag">Growth mindset</p>
+          <p>When we praise effort over outcome, children stop fearing failure — because trying becomes the win.</p>
+        </div>
+
+        <div class="hero-card hero-card-3">
+          <p class="card-label">Cherished Mum</p>
+          <p>"Where little hearts are tenderly grown 🌱"</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BELIEFS STRIP ─────────────────────────────────── -->
+<div class="beliefs">
+  <div class="beliefs-inner">
+    <div class="belief-item">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#97C459" stroke-width="1.5"/><path d="M6 10l3 3 5-5" stroke="#97C459" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p>Effort always matters more than outcome</p>
+    </div>
+    <div class="belief-divider"></div>
+    <div class="belief-item">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#97C459" stroke-width="1.5"/><path d="M6 10l3 3 5-5" stroke="#97C459" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p>Bedtime is for planting seeds of courage</p>
+    </div>
+    <div class="belief-divider"></div>
+    <div class="belief-item">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#97C459" stroke-width="1.5"/><path d="M6 10l3 3 5-5" stroke="#97C459" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p>Parents grow alongside their children</p>
+    </div>
+    <div class="belief-divider"></div>
+    <div class="belief-item">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#97C459" stroke-width="1.5"/><path d="M6 10l3 3 5-5" stroke="#97C459" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p>Every child is capable of more than they believe</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ──────────────────────────────────────────── -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <div class="about-visual reveal">
+        <div class="about-illustration">
+          <div class="about-illustration-inner">
+            <!-- Large sprout SVG illustration -->
+            <svg width="120" height="160" viewBox="0 0 120 160" fill="none" style="margin:0 auto 1.5rem;display:block;">
+              <ellipse cx="60" cy="138" rx="28" ry="22" fill="#FAC775"/>
+              <ellipse cx="50" cy="126" rx="9" ry="13" fill="#FAEEDA" opacity="0.7"/>
+              <line x1="60" y1="118" x2="60" y2="30" stroke="#3B6D11" stroke-width="6" stroke-linecap="round"/>
+              <path d="M60 78 Q22 55 28 20 Q46 48 60 78Z" fill="#97C459"/>
+              <path d="M60 55 Q98 32 92 -2 Q74 26 60 55Z" fill="#639922"/>
+              <path d="M60 22 Q51 8 40 14 Q40 28 60 36 Q80 28 80 14 Q69 8 60 22Z" fill="#ED93B1"/>
+            </svg>
+            <p class="about-quote">"Every child deserves a parent who sees them — truly sees them — and walks beside them."</p>
+            <div class="about-stats">
+              <div class="about-stat">
+                <div class="about-stat-num">2</div>
+                <div class="about-stat-label">Children teaching me every single day</div>
+              </div>
+              <div class="about-stat">
+                <div class="about-stat-num">1</div>
+                <div class="about-stat-label">Journey — messy, tender and beautiful</div>
+              </div>
+              <div class="about-stat">
+                <div class="about-stat-num">∞</div>
+                <div class="about-stat-label">Ways a child surprises you when you listen</div>
+              </div>
+              <div class="about-stat">
+                <div class="about-stat-num">🌱</div>
+                <div class="about-stat-label">Growing together — always</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="about-content reveal">
+        <p class="section-label">About Sue @ Cherished Mum</p>
+        <h2 class="section-title">A mother of two, <em>figuring it out</em> — and sharing every step.</h2>
+        <p class="about-lead">Cherished Mum began with a question I kept asking myself: how do I raise my children in a way that truly honours who they are?</p>
+        <p class="about-text">Not who I hope they'll become. Not who the world expects them to be. But who they already are — with all their feelings, their quirks, their quiet moments of doubt and their bursts of pure brilliance.</p>
+        <p class="about-text">Parenting two very different children taught me that there is no single formula. What there is, is a commitment to showing up with curiosity instead of judgment. To being their friend, their coach, their safe place — their partner in this wonderful, unpredictable journey called life.</p>
+        <p class="about-text">As I found my way, I realised I wasn't alone in the struggle. So many parents carry the same hope — to do right by their children — and the same uncertainty about how. That's why I started sharing. Not as someone who has arrived, but as someone walking the same road, with the same love and the same questions. 💛</p>
+
+        <div class="about-pillars">
+          <div class="about-pillar">
+            <div class="about-pillar-icon" style="background:#EAF3DE;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="about-pillar-text">
+              <h4>Their friend</h4>
+              <p>A presence they feel safe enough to be themselves with</p>
+            </div>
+          </div>
+          <div class="about-pillar">
+            <div class="about-pillar-icon" style="background:#FAEEDA;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            </div>
+            <div class="about-pillar-text">
+              <h4>Their coach</h4>
+              <p>Gently guiding without taking over their journey</p>
+            </div>
+          </div>
+          <div class="about-pillar">
+            <div class="about-pillar-icon" style="background:#FBEAF0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="about-pillar-text">
+              <h4>Their partner</h4>
+              <p>Walking beside them, not ahead or behind</p>
+            </div>
+          </div>
+          <div class="about-pillar">
+            <div class="about-pillar-icon" style="background:#EAF3DE;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="about-pillar-text">
+              <h4>A fellow parent</h4>
+              <p>Sharing what I learn, honestly and with love</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOOKS ─────────────────────────────────────────── -->
+<section class="books" id="books">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Our books</p>
+      <h2 class="section-title">Stories that <em>stay</em> with a child</h2>
+    </div>
+    <div class="books-grid">
+
+      <!-- Book 1 — Published -->
+      <div class="book-card reveal">
+        <div class="book-cover book-cover-1">
+          <div class="book-cover-inner">
+            <svg width="60" height="80" viewBox="0 0 120 160" fill="none" style="margin:0 auto 1rem;display:block;opacity:0.3;">
+              <ellipse cx="60" cy="138" rx="20" ry="16" fill="#FAC775"/>
+              <line x1="60" y1="118" x2="60" y2="50" stroke="#FAF7F2" stroke-width="5" stroke-linecap="round"/>
+              <path d="M60 85 Q36 68 40 44 Q52 64 60 85Z" fill="#C0DD97"/>
+              <path d="M60 46 Q54 36 46 40 Q46 50 60 56 Q74 50 74 40 Q66 36 60 46Z" fill="#F4C0D1"/>
+            </svg>
+            <p class="book-title-art">The Little Girl Who Kept Trying</p>
+            <p class="book-author-art">Sue Lai · Cherished Mum</p>
+          </div>
+        </div>
+        <div class="book-info">
+          <p class="book-tag">Available now · Bedtime story · Growth mindset</p>
+          <p class="book-name">The Little Girl Who Kept Trying</p>
+          <p class="book-desc">A warm bedtime story about Lila — a little girl with a big dream to sing, who discovers that courage doesn't mean being unafraid. It means trying anyway.</p>
+          <a href="https://www.amazon.com" target="_blank" class="book-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Find on Amazon
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 2 — Coming Soon -->
+      <div class="book-card reveal">
+        <div class="book-cover book-cover-2">
+          <div class="book-cover-inner">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" style="margin:0 auto 1rem;display:block;opacity:0.4;">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+            </svg>
+            <p class="book-title-art">A new story is growing...</p>
+            <p class="book-author-art">Coming soon · Sue Lai</p>
+          </div>
+        </div>
+        <div class="book-info">
+          <p class="book-tag">Coming soon · Kindness · Resilience</p>
+          <p class="book-name">The Next Cherished Mum Story</p>
+          <p class="book-desc">A new bedtime story is being written — crafted to nurture kindness, resilience and a child's belief in their own beautiful heart. Stay close. 🌱</p>
+          <a href="#contact" class="book-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            Get notified
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 3 — Coming Soon -->
+      <div class="book-card reveal">
+        <div class="book-cover book-cover-3">
+          <div class="book-cover-inner">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" style="margin:0 auto 1rem;display:block;opacity:0.4;">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#F4C0D1" stroke="#993556" stroke-width="1"/>
+            </svg>
+            <p class="book-title-art">And another seed is planted...</p>
+            <p class="book-author-art">Coming soon · Sue Lai</p>
+          </div>
+        </div>
+        <div class="book-info">
+          <p class="book-tag">Coming soon · Self-esteem · Confidence</p>
+          <p class="book-name">More Stories for Little Hearts</p>
+          <p class="book-desc">Each Cherished Mum book is a gentle invitation — for children to see themselves as capable, loved and full of quiet strength. More stories are on their way.</p>
+          <a href="#contact" class="book-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            Get notified
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+
+    <div class="contact-content reveal">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Let's <em>grow</em> together</h2>
+      <p class="contact-desc">Whether you're a parent who connected with our story, a school or organisation interested in our books, or a media inquiry — I'd love to hear from you.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#97C459" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <p><a href="mailto:suecherishedmum@gmail.com">suecherishedmum@gmail.com</a></p>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#97C459" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <p>Malaysia 🇲🇾</p>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#97C459" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <p>Response within 2–3 business days</p>
+      </div>
+
+      <div class="contact-social">
+        <a href="#" class="social-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          Facebook
+        </a>
+        <a href="#" class="social-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal">
+      <p class="form-title">Send a message</p>
+      <p class="form-sub">I read every single message personally. 💛</p>
+
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First name</label>
+            <input type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Last name</label>
+            <input type="text" placeholder="Family name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" placeholder="hello@yourmail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>I'm reaching out about</label>
+          <select>
+            <option value="">Select a topic...</option>
+            <option>Book enquiry</option>
+            <option>School / organisation partnership</option>
+            <option>Media or press</option>
+            <option>Just want to say hello</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Your message</label>
+          <textarea placeholder="Tell me what's on your heart..."></textarea>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="newsletter" checked>
+          <label for="newsletter">I'd love to receive occasional letters from Cherished Mum — growth mindset tips, new books, and gentle encouragement for parents.</label>
+        </div>
+
+        <button type="submit" class="form-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send message
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-logo">Cherished Mum</p>
+    <p class="footer-tagline">Where little hearts are tenderly grown</p>
+    <ul class="footer-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Cherished Mum · cherishedmum.com · All rights reserved · Made with love 🌱</p>
+  </div>
+</footer>
+
+<!-- ─── SCRIPTS ───────────────────────────────────────── -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile nav toggle
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Close nav on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.innerHTML = '✓ Message sent! Thank you 💛';
+    btn.style.background = '#639922';
+    setTimeout(() => {
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send message';
+      btn.style.background = '';
+      e.target.reset();
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
